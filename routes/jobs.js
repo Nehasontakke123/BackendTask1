@@ -40,15 +40,25 @@ router.get('/import', async (req, res) => {
         }
       }
 
+      // await ImportLog.create({
+      //   fileName: feed.name,
+      //   totalFetched: total,
+      //   totalImported: newCount + updateCount,
+      //   newJobs: newCount,
+      //   updatedJobs: updateCount,
+      //   failedJobs: failed,
+      //   failures,
+      // });
+
       await ImportLog.create({
-        fileName: feed.name,
-        totalFetched: total,
-        totalImported: newCount + updateCount,
-        newJobs: newCount,
-        updatedJobs: updateCount,
-        failedJobs: failed,
-        failures,
-      });
+  fileName: feed.name,
+  totalFetched: total,
+  totalImported: newCount + updateCount,
+  newJobs: newCount,
+  updatedJobs: updateCount,
+  failedJobs: failures, // ✅ Use array of objects
+});
+
     }
 
     res.status(200).json({ message: '✅ Jobs imported successfully' });
