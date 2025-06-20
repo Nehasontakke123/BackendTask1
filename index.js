@@ -19,6 +19,7 @@ async function startServer() {
 
     // ✅ Connect to Redis
     await connectRedis();
+    // await client.quit(); 
 
     // ✅ Routes
     app.use('/api/jobs', jobsRoute);
